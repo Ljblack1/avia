@@ -51,7 +51,7 @@ btn.addEventListener('click', () => {
         displayAlert(cashout);
         // setBackToDefault();
       })
-    }, 1000)
+    }, 6000)
 
   }, 3000)
 })
