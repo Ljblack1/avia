@@ -216,6 +216,21 @@ p {
   background: url("https://aviator-next.spribegaming.com/aviator-logo.cafbd29233306bf7.svg") no-repeat center center/contain;
 }
 
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 0;
+  z-index: 1;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 130px;
+  height: 25px;
+  background-image: url(https://aviator-next.spribegaming.com/top-bar-snow.a903d1c7f8b6d0b8.png);
+  background-position: left bottom;
+}
+
 .header_two_right {
   display: flex;
   align-items: center;
@@ -395,17 +410,66 @@ p {
 }
 
 /* game handles */
-.handles {
- width: 100%;
- display: flex;
- flex-direction: column;
- background-color: #1b1c1d;
- padding: 1.5rem 1rem;
- border-radius: 1rem;
- gap: 1rem;
+.handles,
+.handles_two {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #1b1c1d;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+  gap: 1rem;
 }
 
-.bet_type_btn {
+.hide_handle_two {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background: url(https://aviator-next.spribegaming.com/remove.3d798769e16d6b60.svg) no-repeat center center;
+  z-index: 2;
+}
+
+.handles::before,
+.handles_two::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  z-index: 1;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100px;
+  height: 20px;
+  background-image: url(https://aviator-next.spribegaming.com/bet-control-snow-left.5a60ba1a481f48c2.png);
+  background-position: left top;
+}
+
+.handles::after,
+.handles_two::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -4px;
+  z-index: 1;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 120px;
+  height: 30px;
+  background-image: url(https://aviator-next.spribegaming.com/bet-control-snow-right.f5fade2b9e720254.png);
+  background-position: right top;
+}
+
+.bet_type_btn,
+.bet_type_btn_two {
   display: flex;
   align-items: center;
   width: 60%;
@@ -424,29 +488,49 @@ p {
   padding: .2rem;
   color: #9ea0a3;
   cursor: pointer;
+  font-weight: 700;
 }
 
-.bet_type_btn .active {
+.bet_two,
+.auto_two {
+  width: 100%;
+  height: 100%;
+  border-radius: 3rem;
+  padding: .2rem;
+  color: #9ea0a3;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.bet_type_btn .active,
+.bet_type_btn_two .active {
   background-color: rgb(0, 255, 128);
-  color: #fff;
-  background-color: #9ea0a3;
+  color: rgba(255, 255, 255, .7);
+  background-color: rgba(158, 160, 163, .15);
+  background-image: url(https://aviator-next.spribegaming.com/bet-slider-btn-bg-left.b6afacf42d2ad1f8.svg), url(https://aviator-next.spribegaming.com/bet-slider-btn-bg-right.4d7f6567f3df0412.svg);
+  background-position: left bottom,right bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.place_bet_handle {
+.place_bet_handle,
+.place_bet_handle_two {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   width: 100%;
   gap: .5rem;
 }
 
-.bet_amout {
+.bet_amout,
+.bet_amout_two {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
 }
 
-.place_bet_btn {
+.place_bet_btn,
+.place_bet_btn_two {
   width: 100%;
   display: flex;
   align-items: center;
@@ -463,11 +547,17 @@ p {
   text-transform: uppercase;
 }
 
-.btn_success {
+.btn_success,
+.btn_success_two {
   background-color: #28a909;
+  background-image: url(https://aviator-next.spribegaming.com/snow-btn-bet.88a73d3533c84a88.svg), url(https://aviator-next.spribegaming.com/tree-left-btn-bet.87c54c1f4d86ca02.svg), url(https://aviator-next.spribegaming.com/tree-right-btn-bet.6116fecd1402931a.svg);
+  background-position: center top,left bottom,right bottom;
+  background-size: contain,auto,auto;
+  background-repeat: no-repeat;
 }
 
-.cancel_btn_container {
+.cancel_btn_container,
+.cancel_btn_container_two {
   width: 100%;
   display: flex;
   align-items: center;
@@ -477,11 +567,13 @@ p {
   display: none;
 }
 
-.waiting {
+.waiting,
+.waiting_two {
   font-size: 1rem;
 }
 
-.btn_progress {
+.btn_progress,
+.btn_progress_two {
   border: solid 1px #ffbd71;
   background-color: #d07206;
   box-shadow: inset 0 1px 1px #ffffff80;
@@ -489,13 +581,19 @@ p {
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
   display: none;
+  background-image: url(https://aviator-next.spribegaming.com/snow-btn-cashout.85f10c61cdca9da7.svg), url(https://aviator-next.spribegaming.com/tree-left-btn-cashout.a3232c62e7ac8aec.svg), url(https://aviator-next.spribegaming.com/tree-right-btn-cashout.3ba8c0b6cd2211d5.svg);
+  background-position: center top,left bottom,right bottom;
+  background-size: contain,auto,auto;
+  background-repeat: no-repeat;
 }
 
-.place_bet_btn_currency {
+.place_bet_btn_currency,
+.place_bet_btn_currency_two {
   font-size: 16px;
 }
 
-.btn_danger {
+.btn_danger,
+.btn_danger_two {
   display: flex;
   height: 100%;
   border: solid 1px #ff7171;
@@ -504,14 +602,20 @@ p {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  background-image: url(https://aviator-next.spribegaming.com/snow-btn-cancel.a2edb807a0fa65a2.svg), url(https://aviator-next.spribegaming.com/tree-left-btn-cancel.f91a0356b51cadea.svg), url(https://aviator-next.spribegaming.com/tree-right-btn-cancel.335b235db5760704.svg);
+  background-position: center top,left bottom,right bottom;
+  background-size: contain,auto,auto;
+  background-repeat: no-repeat;
 }
 
-.handle_1 {
+.handle_1,
+.handle_1_two {
   border: 1px solid #cb011a;
   transition: all .3s ease;
 }
 
-.increase_decrease_amount {
+.increase_decrease_amount,
+.increase_decrease_amount_two {
   width: 100%;
   display: flex;
   background-color: #000000b3;
@@ -522,7 +626,9 @@ p {
 }
 
 .decrease, 
-.increase {
+.increase,
+.decrease_two, 
+.increase_two {
   width: 1rem;
   height: 1rem;
   background-color: transparent;
@@ -539,7 +645,8 @@ p {
   cursor: pointer;
 }
 
-.stake_amount {
+.stake_amount,
+.stake_amount_two {
   background-color: transparent;
   text-align: center;
   font-size: 1rem;
@@ -550,7 +657,8 @@ p {
   outline: none;
 }
 
-.choose_amount {
+.choose_amount,
+.choose_amount_two {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -560,7 +668,8 @@ p {
   /* gap: .5rem; */
 }
 
-.selected_amount {
+.selected_amount,
+.selected_amount_two {
   font-size: 14px;
   width: 64px;
   height: 18px;
@@ -690,6 +799,10 @@ p {
     display: none;
   }
 
+  .game_play_stage {
+    margin-bottom: .25rem;
+  }
+
   .game_history {
     display: none;
   }
@@ -735,7 +848,8 @@ p {
     gap: .5rem;
   }
 
-  .handles {
+  .handles,
+  .handles_two {
     padding: 1rem;
   }
 
@@ -759,11 +873,13 @@ p {
     display: inline-block;
   }
 
-  .bet_type_btn{
+  .bet_type_btn,
+  .bet_type_btn_two {
     width: 50%;
   }
 
-  .place_bet_handle {
+  .place_bet_handle,
+  .place_bet_handle_two {
     grid-template-columns: 1fr 1.75fr;
   }
   
@@ -772,7 +888,9 @@ p {
   }
 
   .bet,
-  .auto {
+  .auto,
+  .bet_two,
+  .auto_two {
     padding: .3rem;
   }
 
@@ -781,7 +899,9 @@ p {
   }
 
   .decrease, 
-  .increase {
+  .increase,
+  .decrease_two, 
+  .increase_two {
     padding: 0 4px;
   }
 }
